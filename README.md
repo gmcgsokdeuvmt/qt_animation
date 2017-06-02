@@ -1,0 +1,10 @@
+# structures
+- main.py
+- Tools
+  - Gui
+  - Draw
+  - Anim
+  - IO
+    - File
+    - Keyboard
+    - Mouse
