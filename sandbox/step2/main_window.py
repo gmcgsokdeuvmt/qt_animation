@@ -5,7 +5,7 @@ class Action():
     def __init__(self, mainWindow):
         self.mainWindow = mainWindow
 
-    def exit(self):
+    def getExitAction(self):
         exitAction = QtGui.QAction(QtGui.QIcon('src'+os.sep+'exit.png'), '&Exit', self.mainWindow)
         exitAction.setShortcut('Ctrl+Q')
         exitAction.setStatusTip('Exit application')
@@ -28,7 +28,7 @@ class MainWindow(QtGui.QMainWindow):
     def registerActions(self):
         action = Action(self)
         self.actions = {}
-        self.actions['exit'] = action.exit()
+        self.actions['exit'] = action.getExitAction()
 
     def setMenuBar(self):
         menubar = self.menuBar()
