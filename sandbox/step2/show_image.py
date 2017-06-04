@@ -18,6 +18,7 @@ class ImageWidget(QtGui.QWidget):
         super(ImageWidget,self).__init__()
         self.initUI()
         self.clearImages()
+        self.readImagesFromDirectory('anime')
 
     def initUI(self):
         self.setLabel()
@@ -83,8 +84,9 @@ class ImageWidget(QtGui.QWidget):
 
         image_list = glob.glob(dir_path+os.sep+'*.png')
         for path in image_list:
+            print(path)
             self.addImage(path)
-        self.label.setPixmap(pixmap)
+        self.label.setPixmap(self.pixmaps[self.index])
 
 class MainWindow(QtGui.QMainWindow):
     
@@ -101,9 +103,6 @@ class MainWindow(QtGui.QMainWindow):
 
         self.imageWidget = ImageWidget()
         self.setCentralWidget(self.imageWidget)
-        image_list = glob.glob('../../../../Pictures/*.PNG')
-        for path in image_list:
-            self.imageWidget.addImage(path)
         self.setControl(self.imageWidget)
 
     
