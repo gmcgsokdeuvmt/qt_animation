@@ -17,8 +17,7 @@ class ImageWidget(QtGui.QWidget):
     def __init__(self):
         super(ImageWidget,self).__init__()
         self.initUI()
-        self.index = 0
-        self.pixmaps = []
+        self.clearImages()
 
     def initUI(self):
         self.setLabel()
@@ -74,6 +73,18 @@ class ImageWidget(QtGui.QWidget):
         prevAction.setStatusTip('Previous Image')
         prevAction.triggered.connect(self.showPrevImage)
         return prevAction
+
+    def clearImages(self):
+        self.pixmaps = []
+        self.index = 0
+
+    def readImagesFromDirectory(self,dir_path):
+        self.clearImages()
+
+        image_list = glob.glob(dir_path+os.sep+'*.png')
+        for path in image_list:
+            self.addImage(path)
+        self.label.setPixmap(pixmap)
 
 class MainWindow(QtGui.QMainWindow):
     
